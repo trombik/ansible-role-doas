@@ -1,0 +1,2 @@
+__doas_db_dir: /var/db/doas
+__doas_conf_dir: /usr/local/etc/doas

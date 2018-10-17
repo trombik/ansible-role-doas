@@ -1,0 +1,6 @@
+---
+
+- name: Restart doas
+  service:
+    name: doas
+    state: restarted
