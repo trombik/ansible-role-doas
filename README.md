@@ -1,6 +1,6 @@
-# ansible-role-doas
+# Ansible role  doas
 
-A brief description of the role goes here.
+Configure `doas.conf(5)`.
 
 # Requirements
 
@@ -8,9 +8,18 @@ None
 
 # Role Variables
 
-| variable | description | default |
+| Variable | Description | Default |
 |----------|-------------|---------|
+| `doas_conf_dir` | base directory of `doas.conf(5)` | `{{ __doas_conf_dir }}` |
+| `doas_conf_file` | Path to `doas.conf(5)` | `{{ doas_conf_dir }}/doas.conf` |
+| `doas_conf_file_mode` | Permission of `doas.conf(5)` | `0644` |
+| `doas_config` | Content of `doas.conf(5)` | `""` |
 
+## OpenBSD
+
+| Variable | Default |
+|----------|---------|
+| `__doas_conf_dir` | `/etc` |
 
 # Dependencies
 
@@ -19,6 +28,17 @@ None
 # Example Playbook
 
 ```yaml
+- hosts: localhost
+  roles:
+    - ansible-role-doas
+  vars:
+    doas_conf_file_mode: 0640
+    doas_config: |
+      permit nopass vagrant as root cmd sysctl
+      permit persist setenv { PKG_CACHE PKG_PATH } aja cmd pkg_add
+      permit setenv { -ENV PS1=$DOAS_PS1 SSH_AUTH_SOCK } :wheel
+      permit nopass tedu as root cmd /usr/sbin/procmap
+      permit nopass keepenv root as root
 ```
 
 # License

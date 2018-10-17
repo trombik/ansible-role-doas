@@ -1,4 +1,4 @@
 doas_conf_dir: "{{ __doas_conf_dir }}"
-doas_conf_file: "{{ __doas_conf_dir }}/doas.conf"
+doas_conf_file: "{{ doas_conf_dir }}/doas.conf"
 doas_conf_file_mode: 0644
 doas_config: ""
