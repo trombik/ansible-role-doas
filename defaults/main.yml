@@ -1,8 +1,4 @@
-doas_user: doas
-doas_group: doas
-doas_log_dir: /var/log/doas
-doas_db_dir: "{{ __doas_db_dir }}"
-doas_service: doas
 doas_conf_dir: "{{ __doas_conf_dir }}"
 doas_conf_file: "{{ __doas_conf_dir }}/doas.conf"
-doas_flags: ""
+doas_conf_file_mode: 0644
+doas_config: ""

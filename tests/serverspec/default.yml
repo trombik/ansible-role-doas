@@ -2,4 +2,10 @@
   roles:
     - ansible-role-doas
   vars:
-    doas_config: ""
+    doas_conf_file_mode: 0640
+    doas_config: |
+      permit nopass vagrant as root cmd sysctl
+      permit persist setenv { PKG_CACHE PKG_PATH } aja cmd pkg_add
+      permit setenv { -ENV PS1=$DOAS_PS1 SSH_AUTH_SOCK } :wheel
+      permit nopass tedu as root cmd /usr/sbin/procmap
+      permit nopass keepenv root as root

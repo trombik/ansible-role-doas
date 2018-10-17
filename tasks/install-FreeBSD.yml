@@ -1,6 +1,0 @@
----
-
-- name: Install doas
-  pkgng:
-    name: doas
-    state: present
